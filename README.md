@@ -6,5 +6,5 @@ Each subdirectory contains a separate project. For each subdirectory follow the 
 
 ### Getting Started
 
-    $ npm install
-    $ npm start
+    $ yarn install
+    $ yarn start
