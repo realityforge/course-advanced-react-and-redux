@@ -10,7 +10,11 @@ describe('App' , () => {
   });
 
   // use 'it' to test a single attribute of a target
-  it('shows the correct text', () => {
-    expect(component).to.contain('React simple starter');
+  it('shows the comment box', () => {
+    // Rather than looking for a specific react component these
+    // tests, verify the shape of the output html. We know that the
+    // component has a unique classname so we use this strategy to identify
+    // the subcomponent
+    expect(component.find('.CommentBox')).to.exist;
   });
 });
