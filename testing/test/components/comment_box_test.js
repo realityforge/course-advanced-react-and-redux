@@ -20,4 +20,20 @@ describe('CommentBox', () => {
   it('has a button', () => {
     expect(component.find('button')).to.exist;
   });
+
+  describe('has some text entered', () => {
+    beforeEach( () => {
+      component.find('textarea').simulate('change', 'new comment');
+    });
+
+    it('shows text in text area', () => {
+      //This really just verifies it is a controlled component
+      expect(component.find('textarea')).to.have.value('new comment');
+    });
+
+    it('when submitted, clears the text area', () => {
+      component.simulate('submit');
+      expect(component.find('textarea')).to.have.value('');
+    });
+  });
 });
