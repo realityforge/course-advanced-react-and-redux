@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { saveComment } from '../actions/index';
 
-export default class CommentBox extends Component {
+class CommentBox extends Component {
   constructor( props ) {
     super( props );
 
@@ -12,14 +14,18 @@ export default class CommentBox extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit} className="CommentBox">
+        <h4>Add a comment</h4>
         <textarea value={this.state.comment} onChange={this.onTextAreaChange}/>
-        <button type="submit">Add Comment</button>
+        <div>
+          <button type="submit">Add Comment</button>
+        </div>
       </form>
     );
   }
 
   onSubmit( event ) {
     event.preventDefault();
+    this.props.saveComment( this.state.comment );
     this.setState( { comment: '' } );
   }
 
@@ -27,3 +33,5 @@ export default class CommentBox extends Component {
     this.setState( { comment: event.target.value } );
   }
 }
+
+export default connect( null, { saveComment } )( CommentBox );
