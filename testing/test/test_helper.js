@@ -26,10 +26,15 @@ function renderComponent(ComponentClass, props = {}, state = {}) {
   return $(ReactDOM.findDOMNode(componentInstance));
 }
 
+//$.fn means any object created by jquery will have this "simulate"
+//method available off it.
 $.fn.simulate = function(eventName, value) {
+  // this is the element selected. i.e. In $('div').simulate(...) this will refer to $('div')
   if (value) {
     this.val(value);
   }
+  // As this is a collection (i.e. $('div') is all matching elements) we need
+  // to access first element when simulating event.
   TestUtils.Simulate[eventName](this[0]);
 };
 
