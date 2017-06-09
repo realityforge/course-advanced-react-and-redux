@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { authenticate } from '../actions/index';
 
-export default class Header extends Component {
+class Header extends Component {
   render() {
     return (
       <nav className="navbar navbar-light">
@@ -22,7 +24,15 @@ export default class Header extends Component {
 
   authButton() {
     return (
-      <button>Sign In</button>
+      <button onClick={() => this.props.authenticate( !this.props.authenticated )}>
+        {this.props.authenticated ? 'Sign Out' : 'Sign In'}
+      </button>
     );
   }
 }
+
+function mapStateToProps( { authenticated } ) {
+  return { authenticated };
+}
+
+export default connect( mapStateToProps, { authenticate } )( Header );
