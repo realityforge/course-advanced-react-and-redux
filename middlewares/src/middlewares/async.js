@@ -7,7 +7,7 @@ export default function({ dispatch }) {
       next(action);
     } else {
       // Wait until promise resolves
-      action.payload.then(response => dispatch({ type: action.type, payload: response.data }));
+      action.payload.then(response => dispatch({ ...action, payload: response.data }));
     }
   };
 }
