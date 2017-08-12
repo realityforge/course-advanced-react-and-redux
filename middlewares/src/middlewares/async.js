@@ -6,7 +6,7 @@ export default function({ dispatch }) {
     if (!action.payload || !action.payload.then) {
       next(action);
     } else {
-      // Wait until promise resolves
+      // Wait until promise resolves and dispatch the resultant action through middleware chain
       action.payload.then(response => dispatch({ ...action, payload: response.data }));
     }
   };
