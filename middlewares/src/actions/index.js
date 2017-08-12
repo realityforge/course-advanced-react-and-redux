@@ -4,9 +4,9 @@ export function fetchUsers() {
   return {
     type: FETCH_USERS,
     payload: [
-      { name: 'Bobba' },
-      { name: 'Jango' },
-      { name: 'Luke' }
+      { id: 1, name: 'Bobba' },
+      { id: 2, name: 'Jango' },
+      { id: 3, name: 'Luke' }
     ]
   };
 }
