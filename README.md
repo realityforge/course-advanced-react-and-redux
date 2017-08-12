@@ -8,3 +8,9 @@ Each subdirectory contains a separate project. For each subdirectory follow the 
 
     $ yarn install
     $ yarn start
+
+### Auth
+
+Start a mongo db server via:
+
+    $ docker run -p 27017 --name auth-mongo -d mongo
