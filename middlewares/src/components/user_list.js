@@ -10,12 +10,12 @@ class UserList extends Component {
   render() {
     return (
       <div>
-        {this.props.users.map(this.renderUser)}
+        {this.props.users.map(UserList.renderUser)}
       </div>
     );
   }
 
-  renderUser(user) {
+  static renderUser(user) {
     return (
       <div key={user.id} className="card card-block">
         <h4 className="card-title">{user.name}</h4>
