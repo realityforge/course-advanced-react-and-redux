@@ -1,4 +1,4 @@
-import Authentication from './controllers/authentication';
+const Authentication = require('./controllers/authentication');
 
 module.exports = function(app) {
   app.get('/signup', Authentication.signup);
