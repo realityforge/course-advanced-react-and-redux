@@ -33,6 +33,18 @@ userSchema.pre('save', function(next) {
   });
 });
 
+// Accept a candidate password, encypt it using the smae salt and see if it matches
+// the saved model password field.
+userSchema.methods.comparePassword = function(candidate, callback) {
+  bcrypt.compare(candidate, this.password, function(err, isMatch) {
+    if (err) {
+      return callback(err);
+    } else {
+      callback(null, isMatch);
+    }
+  });
+};
+
 // Create the model class
 const ModelClass = mongoose.model('user', userSchema);
 
