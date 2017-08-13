@@ -1,4 +1,4 @@
-import User from '../models/user';
+const User = require('../models/user');
 
 module.signup = function(req, resp, next) {
   const { email, password } = req.body;
