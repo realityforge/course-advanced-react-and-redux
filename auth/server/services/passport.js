@@ -7,7 +7,9 @@ const config = require('../config');
 
 // Options for JWT
 const jwtOptions = {
+  // Make sure the jwt token is extracted from authorization header
   jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+  // Use our app secret
   secretOrKey: config.secret
 };
 
