@@ -18,6 +18,7 @@ ReactDOM.render(
       <div>
         <Header/>
         <Switch>
+          <Route path="/signin" component={Signin}/>
           <Route path="/" component={App}/>
         </Switch>
       </div>
