@@ -14,3 +14,7 @@ Each subdirectory contains a separate project. For each subdirectory follow the 
 Start a mongo db server via:
 
     $ docker run -p 27017 --name auth-mongo -d mongo
+
+Generate a random string via:
+
+    $ echo "module.exports = { secret: 'SOMERandomString' };" > auth/server/config.js
