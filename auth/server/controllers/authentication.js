@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-module.signup = function(req, resp, next) {
+exports.signup = function(req, resp, next) {
   const { email, password } = req.body;
   if (!email || !email) {
     //return an error if email or password not provided
