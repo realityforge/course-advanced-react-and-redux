@@ -40,3 +40,8 @@ exports.signup = function(req, resp, next) {
     });
   }
 };
+
+exports.signin = function(request, response, next) {
+  // User has already been authorized by the time this is reached so we just return a token
+  response.send({ token: tokenForUser(request.user) });
+};
