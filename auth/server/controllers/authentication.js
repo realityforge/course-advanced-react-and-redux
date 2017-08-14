@@ -12,7 +12,7 @@ function tokenForUser(user) {
 
 exports.signup = function(req, resp, next) {
   const { email, password } = req.body;
-  if (!email || !email) {
+  if (!email || !password) {
     //return an error if email or password not provided
     return resp.status(422).send({ error: 'You must provide an email and password' });
   } else {
