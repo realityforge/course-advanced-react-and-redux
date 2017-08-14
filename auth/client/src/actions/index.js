@@ -30,7 +30,6 @@ export function signupUser(history, { email, password }) {
            history.push('/feature');
          })
          .catch((e) => {
-           console.log(e);
            dispatch(authError('Signup failed. Email already exists or password not supplied.'));
          });
   };

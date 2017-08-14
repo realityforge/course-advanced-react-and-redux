@@ -63,8 +63,6 @@ function mapStateToProps(state) {
 function validate(form) {
   const errors = {};
 
-  console.log(form);
-
   if (!form.email) {
     errors.email = 'Please enter an email';
   }
