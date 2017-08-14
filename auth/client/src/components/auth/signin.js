@@ -15,7 +15,6 @@ class Signin extends Component {
 
   render() {
     const { handleSubmit, fields: { email, password } } = this.props;
-    console.log(this.props);
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit)}>
         <fieldset className="form-group">
