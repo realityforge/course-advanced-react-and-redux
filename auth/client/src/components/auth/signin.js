@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {reduxForm} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import {signinUser} from '../../actions';
 
 class Signin extends Component {
@@ -14,20 +14,31 @@ class Signin extends Component {
   }
 
   render() {
-    const { handleSubmit, fields: { email, password } } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-        <fieldset className="form-group">
-          <label>Email</label>
-          <input type="text" className="form-control" {...email}/>
-        </fieldset>
-        <fieldset className="form-group">
-          <label>Password</label>
-          <input type="password" className="form-control" {...password}/>
-        </fieldset>
+      <form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
+        <Field name="email" label="Email" component={field => this.renderField(field, 'text')}/>
+        <Field name="password" label="Password" component={field => this.renderField(field, 'password')}/>
         {this.renderAlert()}
         <button type="submit" className="btn btn-primary">Sign In</button>
       </form>
+    );
+  }
+
+  renderField(field, type) {
+    const { meta: { touched, error } } = field;
+    // Rather than using field.meta.touched we can use touched
+    // Rather than using field.meta.error we can use error
+    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+    return (
+      <fieldset className={className}>
+        <label>{field.label}</label>
+        <input
+          className="form-control"
+          type={type}
+          {...field.input}
+        />
+        <div className="text-help">{touched ? error : ''}</div>
+      </fieldset>
     );
   }
 
