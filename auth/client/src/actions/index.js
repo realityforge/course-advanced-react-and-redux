@@ -1,10 +1,9 @@
 import axios from 'axios';
-import history from '../history';
 import {AUTH_ERROR, AUTH_USER, UNAUTH_USER} from './types';
 
 const ROOT_URL = 'http://localhost:3090';
 
-export function signinUser({ email, password }) {
+export function signinUser(history, { email, password }) {
   return function(dispatch) {
     axios.post(`${ROOT_URL}/signin`, { email, password })
          .then(response => {
@@ -20,7 +19,7 @@ export function signinUser({ email, password }) {
   };
 }
 
-export function signupUser({ email, password }) {
+export function signupUser(history, { email, password }) {
   return function(dispatch) {
     axios.post(`${ROOT_URL}/signup`, { email, password })
          .then(response => {
