@@ -20,6 +20,23 @@ export function signinUser({ email, password }) {
   };
 }
 
+export function signupUser({ email, password }) {
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/signup`, { email, password })
+         .then(response => {
+           const jwtToken = response.data.token;
+
+           localStorage.setItem('token', jwtToken);
+           dispatch({ type: AUTH_USER });
+           history.push('/feature');
+         })
+         .catch((e) => {
+           console.log(e);
+           dispatch(authError('Signup failed. Email already exists or password not supplied.'));
+         });
+  };
+}
+
 export function authError(error) {
   return {
     type: AUTH_ERROR,
