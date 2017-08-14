@@ -6,6 +6,7 @@ import {applyMiddleware, createStore} from 'redux';
 import reduxThunk from 'redux-thunk';
 import App from './components/app';
 import Signin from './components/auth/signin';
+import Signout from './components/auth/signout';
 import Feature from './components/feature';
 import Header from './components/header';
 import history from './history';
