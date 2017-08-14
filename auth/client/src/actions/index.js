@@ -6,7 +6,6 @@ const ROOT_URL = 'http://localhost:3090';
 
 export function signinUser({ email, password }) {
   return function(dispatch) {
-    // Attempt to connect
     axios.post(`${ROOT_URL}/signin`, { email, password })
          .then(response => {
            const jwtToken = response.data.token;
