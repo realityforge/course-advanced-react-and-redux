@@ -1,6 +1,6 @@
 import axios from 'axios';
 import history from '../history';
-import {AUTH_ERROR, AUTH_USER} from './types';
+import {AUTH_ERROR, AUTH_USER, UNAUTH_USER} from './types';
 
 const ROOT_URL = 'http://localhost:3090';
 
