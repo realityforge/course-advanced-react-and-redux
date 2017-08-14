@@ -25,11 +25,26 @@ class Signin extends Component {
           <label>Password</label>
           <input type="password" className="form-control" {...password}/>
         </fieldset>
+        {this.renderAlert()}
         <button type="submit" className="btn btn-primary">Sign In</button>
       </form>
     );
   }
+
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops!</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
+  }
+}
+
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.error };
 }
 
 export default reduxForm({ form: 'Signin', fields: ['email', 'password'] })(
-  connect(null, { signinUser })(Signin));
+  connect(mapStateToProps, { signinUser })(Signin));
