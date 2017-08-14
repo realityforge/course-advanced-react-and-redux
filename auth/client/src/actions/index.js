@@ -30,5 +30,5 @@ export function authError(error) {
 
 export function signoutUser() {
   localStorage.removeItem('token');
-  dispatch({ type: UNAUTH_USER });
+  return { type: UNAUTH_USER };
 }
