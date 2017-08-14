@@ -19,6 +19,7 @@ ReactDOM.render(
         <Header/>
         <Switch>
           <Route path="/signin" component={Signin}/>
+          <Route path="/signout" component={Signout}/>
           <Route path="/" component={App}/>
         </Switch>
       </div>
