@@ -33,7 +33,7 @@ exports.signup = function(req, resp, next) {
 
           } else {
             //return success response with user details
-            resp.json({ token: tokenForUser(user) });
+            return resp.json({ token: tokenForUser(user) });
           }
         });
       }
