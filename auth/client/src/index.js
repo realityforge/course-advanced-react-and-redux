@@ -6,6 +6,7 @@ import {applyMiddleware, createStore} from 'redux';
 import reduxThunk from 'redux-thunk';
 import App from './components/app';
 import Signin from './components/auth/signin';
+import Feature from './components/feature';
 import Header from './components/header';
 import history from './history';
 import reducers from './reducers';
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/signin" component={Signin}/>
           <Route path="/signout" component={Signout}/>
+          <Route path="/feature" component={Feature}/>
           <Route path="/" component={App}/>
         </Switch>
       </div>
