@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {applyMiddleware, createStore} from 'redux';
 import reduxThunk from 'redux-thunk';
+import {authUser} from './actions/index';
 import App from './components/app';
 import RequireAuth from './components/auth/require_auth';
 import Signin from './components/auth/signin';
@@ -16,6 +17,11 @@ import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
+
+const jwtToken = localStorage.getItem('token');
+if (jwtToken) {
+  store.dispatch(authUser(jwtToken));
+}
 
 ReactDOM.render(
   <Provider store={store}>
