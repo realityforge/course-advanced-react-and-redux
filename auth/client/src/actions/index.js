@@ -24,9 +24,7 @@ export function signupUser(history, { email, password }) {
     axios.post(`${ROOT_URL}/signup`, { email, password })
          .then(response => {
            const jwtToken = response.data.token;
-
-           localStorage.setItem('token', jwtToken);
-           dispatch({ type: AUTH_USER });
+           dispatch(authUser(jwtToken));
            history.push('/feature');
          })
          .catch((e) => {
@@ -45,4 +43,9 @@ export function authError(error) {
 export function signoutUser() {
   localStorage.removeItem('token');
   return { type: UNAUTH_USER };
+}
+
+export function authUser(jwtToken) {
+  localStorage.setItem('token', jwtToken);
+  return { type: AUTH_USER };
 }
