@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 // ComposedComponent is the name used by convention for the component
 // that will be enhanced
@@ -27,8 +27,6 @@ export default function ( ComposedComponent ) {
     }
 
     render() {
-      console.log( this.context );
-      console.log( this.props.authenticated );
       return (
         <ComposedComponent {...this.props}/>
       );
