@@ -19,7 +19,7 @@ const store = createStoreWithMiddleware(reducers);
 
 const jwtToken = localStorage.getItem('token');
 if (jwtToken) {
-  store.dispatch(authUser(jwtToken));
+  store.dispatch(authUser());
 }
 
 ReactDOM.render(
