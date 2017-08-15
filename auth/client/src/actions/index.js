@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {AUTH_ERROR, AUTH_USER, UNAUTH_USER} from './types';
+import {AUTH_ERROR, AUTH_USER, SHOW_SECRET, UNAUTH_USER} from './types';
 
 const ROOT_URL = 'http://localhost:3090';
 
@@ -48,4 +48,13 @@ export function signoutUser() {
 
 export function authUser() {
   return { type: AUTH_USER };
+}
+
+export function getSecret() {
+  return function(dispatch) {
+    axios.get(`${ROOT_URL}`, { headers: { authorization: localStorage.getItem('token') } })
+         .then(response => {
+           dispatch({ type: SHOW_SECRET, payload: response.data });
+         });
+  };
 }

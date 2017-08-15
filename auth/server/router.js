@@ -9,6 +9,6 @@ module.exports = function(app) {
   app.post('/signin', requireSignin, Authentication.signin);
   app.post('/signup', Authentication.signup);
   app.get('/', requireAuth, function(req, res, next) {
-    res.send(['ignore-me']);
+    res.send(['my-secret']);
   });
 };

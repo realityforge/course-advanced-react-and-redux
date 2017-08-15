@@ -1,9 +1,21 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {getSecret} from '../actions/index';
 
-export default class Feature extends Component {
+class Feature extends Component {
+  componentDidMount() {
+    this.props.getSecret();
+  }
+
   render() {
     return (
-      <div>Welcome to the fancy feature</div>
+      <div>Welcome to the fancy feature. Secret: {this.props.secret}</div>
     );
   }
 }
+
+function mapStateToProps({ secret }) {
+  return { secret };
+}
+
+export default connect(mapStateToProps, { getSecret })(Feature);
