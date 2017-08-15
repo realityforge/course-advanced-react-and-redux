@@ -12,7 +12,6 @@ import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
 import Feature from './components/feature';
 import Header from './components/header';
-import history from './history';
 import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -25,7 +24,7 @@ if (jwtToken) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter history={history}>
+    <BrowserRouter>
       <div>
         <Header/>
         <Switch>
